@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>离线推荐列表</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- jquery -->
+    <script type="text/javascript" src="/js/jquery.min.js"></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" href="/bootstrap/css/bootstrap.min.css" />
+    <script type="text/javascript" src="/bootstrap/js/bootstrap.min.js"></script>
+    <!-- jquery-validator -->
+    <script type="text/javascript" src="/jquery-validation/jquery.validate.min.js"></script>
+    <!--    <script type="text/javascript" src="/jquery-validation/localization/messages_zh.min.js}"></script>-->
+    <!-- layer -->
+    <script type="text/javascript" src="/layer/layer.js"></script>
+    <!-- md5.js -->
+    <script type="text/javascript" src="/js/md5.min.js"></script>
+    <!-- common.js -->
+    <script type="text/javascript" src="/js/common.js"></script>
+
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+
+<div class="panel panel-default" >
+    <div class="panel-heading">离线推荐列表</div>
+    <table class="table" id="productsVoList">
+        <tr><td>商品名称</td><td>商品图片</td><td>商品价格</td><td>库存数量</td><td>详情</td></tr>
+        <tr  v-for ="productsVo in productsVoList">
+            <td>{{productsVo.name}}</td>
+            <td><img :src="productsVo.img" width="100" height="100" /></td>
+            <td>{{productsVo.price}}</td>
+            <td>{{productsVo.stockCount}}</td>
+            <td><a class="btn btn-primary" :href="'/products_detail.htm?productId='+productsVo.id">商品详情</a></td>
+            <td><a class="btn btn-danger" :href="'/recommender/productrecs/'+productsVo.id">相似商品</a></td>
+        </tr>
+
+    </table>
+</div>
+</body>
+</html>
+<script>
+    var vmm=new Vue({
+        el: '#productsVoList',
+        data: {
+            productsVoList:[]
+        },
+        mounted:function(){
+            this.showData();
+            //需要执行的方法可以在mounted中进行触发，其获取的数据可以赋到data中后，可以放在前面进行渲染
+        },
+
+        methods:{
+            showData:function () {
+                jQuery.ajax({
+                        type: 'Get',
+                        url: "/recommender/userrecs2",
+                        // data:{type:type,ext:ext},
+                        datatype: "json",
+                        success: function (data) {
+                            // for(var i=0;i<data.length;i++)
+                            vmm.productsVoList=data;
+                            console.log(vmm.productsVoList);
+                        }
+                    }
+                )
+            }
+        },}
+    )
+</script>

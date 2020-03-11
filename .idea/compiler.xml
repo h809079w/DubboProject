@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="SearchService" />
+        <module name="PurchaseConsumer" />
+        <module name="RecomenderService" />
+        <module name="IndexConsumer" />
+        <module name="ProductService" />
+        <module name="ServiceAPI" />
+        <module name="PurchaseService2" />
+        <module name="ProductConsumer" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Consumer" target="1.8" />
+      <module name="DubboProject" target="1.8" />
+      <module name="IndexConsumer" target="1.8" />
+      <module name="ProductConsumer" target="1.8" />
+      <module name="ProductService" target="1.8" />
+      <module name="PurchaseConsumer" target="1.8" />
+      <module name="PurchaseService" target="1.8" />
+      <module name="PurchaseService2" target="1.8" />
+      <module name="RecomenderService" target="1.8" />
+      <module name="RecommenderConsumer" target="1.8" />
+      <module name="recommenderconsumer" target="1.8" />
+      <module name="SearchConsumer" target="1.8" />
+      <module name="SearchService" target="1.8" />
+      <module name="ServiceAPI" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Consumer" options="-parameters" />
+      <module name="IndexConsumer" options="-parameters" />
+      <module name="ProductConsumer" options="-parameters" />
+      <module name="ProductService" options="-parameters" />
+      <module name="PurchaseConsumer" options="-parameters" />
+      <module name="PurchaseService" options="-parameters" />
+      <module name="PurchaseService2" options="-parameters" />
+      <module name="RecomenderService" options="-parameters" />
+      <module name="RecommenderConsumer" options="-parameters" />
+      <module name="SearchConsumer" options="-parameters" />
+      <module name="SearchService" options="-parameters" />
+      <module name="ServiceAPI" options="-parameters" />
+      <module name="recommenderconsumer" options="-parameters" />
+    </option>
+  </component>
+</project>

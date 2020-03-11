@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+
+
+
+    <!-- jquery -->
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <!--导入bootstrap的样式和js以及1.9版本以上的JQuery-->
+<!--    <link href="css/bootstrap.min.css" rel="stylesheet"/>-->
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}">
+<!--    <script src="js/jquery-1.12.4.min.js"></script>-->
+
+<!--    <script src="js/bootstrap.min.js"></script>-->
+    <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+<!--    <link rel="stylesheet" href="Font-Awesome-3.2.1/css/font-awesome.min.css">&lt;!&ndash;字体图标&ndash;&gt;-->
+    <link rel="stylesheet" type="text/css" th:href="@{/font-awesome-4.7.0/css/font-awesome.min.css}" >
+
+
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <title>Document</title>
+
+
+</head>
+<body>
+
+<!--导航栏,设置导航栏的样式为默认navbar-default，而navbar-inverse，,nav里面加上navbar-fixed-top试一下导致导航栏顶部下面以部门区域覆盖，后面我加了br换行-->
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#my_nav" aria-expanded="false">
+                <!--兼容性使用-->
+                <span class="sr-only">Toggle navigation</span>
+                <!--当在移动访问时，右上角出现按钮，表示按钮上的三根横线-->
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#" class="navbar-brand" style="padding: 0px 15px 0px 15px;">
+                <img src="images/csdn1.png" class="img-responsive" style="width:50px;height:50px;" ></img>
+            </a>
+        </div>
+
+
+        <!--导航条菜单-->
+        <div class="collapse navbar-collapse" id="my_nav">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">首页</a></li>
+                <li><a href="#">博客</a></li>
+                <li><a href="#">商城</a></li>
+                <li><a href="#">下载</a></li>
+                <li><a href="#">商城</a></li>
+                <li><a href="#">招聘</a></li>
+                <li><a href="#">问答</a></li>
+                <li><a href="#">活动</a></li>
+                <li><a href="#">论坛</a></li>
+            </ul>
+
+            <form class="navbar-form navbar-left">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="搜CSDN"/>
+                    <span class="input-group-btn">
+				     <button class="btn btn-primary" type="button">搜索</button>
+				   </span>
+                </div>
+            </form>
+
+            <ul class="nav navbar-nav">
+
+                <li><a href="#"><span class="icon-pencil" style="font-size:15px; color:red"></span>写博客</a></li>
+
+                <li><a href="#"><span class="icon-envelope-alt" style="font-size:15px;color:blue;"></span>消息</a></li>
+
+
+                <li class="dropdown">
+
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" id="more"><font id="z">查看更多</font> <span class="caret"></span></a>
+                    <ul class="dropdown-menu" align="center" >
+                        <li><a href="#"><span class="  icon-star-empty" style="font-size:15px;">&nbsp;&nbsp;</span>我的关注</a></li>
+                        <li><a href="#"><span class="  icon-bookmark-empty" style="font-size:15px;">&nbsp;&nbsp;</span>我的收藏</a></li>
+                        <li><a href="#"><span class=" icon-user" style="font-size:15px;">&nbsp;&nbsp;</span>个人中心</a></li>
+                        <li><a href="#"><span class=" icon-cog" style="font-size:15px;">&nbsp;&nbsp;</span>账号设置</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><span class=" icon-user-md" style="font-size:15px;">&nbsp;&nbsp;</span>我的博客</a></li>
+                        <li><a href="#"><span class="  icon-cogs" style="font-size:15px;">&nbsp;&nbsp;</span>管理博客</a></li>
+                        <li><a href="#"><span class="  icon-cloud-download" style="font-size:15px;">&nbsp;&nbsp;</span>我的下载</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#"><span class=" icon-question-sign" style="font-size:15px;">&nbsp;&nbsp;</span>帮助</a></li>
+                        <li><a href="#"><span class=" icon-signout" style="font-size:15px;">&nbsp;&nbsp;</span>退出</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="#">登录<span  style="font-size:15px;"></span></a></li>
+                <li><a href="#">注册<span  style="font-size:15px;"></span></a></li>
+
+
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<br><br>
+<br><br>
+
+
+<!--container容器是页面左右两边预留空白的容器-->
+<!--container-fluid容器是100%宽度的容器-->
+
+<div class="container">
+
+    <div id="hot-products" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#hot-products" data-slide-to="0" class="active"></li>
+            <li data-target="#hot-products" data-slide-to="1"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <img src="images/huawei.jpg" class="img-responsive"/>
+                <div class="carousel-caption">
+                    图片一
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/baidu1.jpg" class="img-responsive"/>
+                <div class="carousel-caption">
+                    图片二
+                </div>
+            </div>
+            <div class="item">
+                <img src="images/ai.jpg" class="img-responsive"/>
+                <div class="carousel-caption">
+                    图片三
+                </div>
+            </div>
+        </div>
+        <a class="left carousel-control" href="#hot-products" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#hot-products" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+    <span class="fa fa-bath"></span>
+    <i class="fa fa-address-card"></i>
+
+
+    <div class="page-header">
+        <h3>热卖视频教程<a href="#"><small class="pull-right">查看所有</small></a></h3>
+    </div>
+
+    <!--面包屑导航-->
+    <ul class="breadcrumb">
+        <li><a href="#">首页
+        <li><a href="#">Java
+        <li class="active">Python
+        <li><a href="#">PHP
+        <li class="active">JavaScript
+        <li><a href="#">C++
+        <li class="active">HTML5
+    </ul>
+
+
+    <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="thumbnail product">
+                <a href="product.html"><img src="images/javashipin.png" alt="商品图片" style="width:300px;height:150px"></a>
+                <div class="caption">
+                    <h3>Java</h3>
+                    <p>性价比最高的Java教学视频</p>
+                    <p><del>原件：￥299.00</del>&nbsp;&nbsp;现价：<strong>￥199.00</strong></p>
+                    <p>月销量：500&nbsp;&nbsp;评价数：5000</p>
+                    <p>
+                        <a class="btn btn-primary" href="javascript:;" οnclick="addCart();" role="button">加入购物车</a>
+                        <a class="btn btn-danger" href="#" role="button">立即购买</a>
+                    </p>
+                </div>
+                <span class="label label-success new">新品</span>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="thumbnail product">
+                <a href="product.html"><img src="images/pythonshipin.jpg" alt="商品图片" style="width:300px;height:150px"></a>
+                <div class="caption">
+                    <h3>Python</h3>
+                    <p>性价比最高的Python教学视频</p>
+                    <p><del>原价：999.00元</del>&nbsp;&nbsp;现价：799.00元</p>
+                    <p>月销量：1000&nbsp;&nbsp;评价数：36000</p>
+                    <p>
+                        <a class="btn btn-primary" href="javascript:;" οnclick="addCart();" role="button">加入购物车</a>
+                        <a class="btn btn-danger" href="#" role="button">立即购买</a>
+                    </p>
+                </div>
+                <span class="label label-success new">新品</span>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="thumbnail product">
+                <a href="product.html"><img src="images/phpshipin.jpg" alt="商品图片" style="width:300px;height:150px"></a>
+                <div class="caption">
+                    <h3>PHP</h3>
+                    <p>性价比最高的PHP教学视频</p>
+                    <p><del>原价：1999.00元</del>&nbsp;&nbsp;现价：999.00元</p>
+                    <p>月销量：500&nbsp;&nbsp;评价数：5000</p>
+                    <p>
+                        <a class="btn btn-primary" href="javascript:;" οnclick="addCart();" role="button">加入购物车</a>
+                        <a class="btn btn-danger" href="#" role="button">立即购买</a>
+                    </p>
+                </div>
+                <span class="label label-success new">新品</span>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="thumbnail product">
+                <a href="product.html"><img src="images/springbootshipin.jpg" alt="商品图片" style="width:300px;height:150px" ></a>
+                <div class="caption">
+                    <h3>SpringBoot</h3>
+                    <p>性价比最高的SpringBoot教学视频</p>
+                    <p><del>原价：4999.00元</del>&nbsp;&nbsp;现价：3999.00元</p>
+                    <p>月销量：500&nbsp;&nbsp;评价数：5000</p>
+                    <p>
+                        <a class="btn btn-primary" href="javascript:;" οnclick="addCart();" role="button">加入购物车</a>
+                        <a class="btn btn-danger" href="#" role="button">立即购买</a>
+                    </p>
+                </div>
+                <span class="label label-success new">新品</span>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="thumbnail product">
+                <a href="product.html"><img src="images/visualbasicshipin.jpg" alt="商品图片" style="width:300px;height:150px"></a>
+                <div class="caption">
+                    <h3>Visual Basic</h3>
+                    <p>性价比最高的Visual Basic教学视频</p>
+                    <p><del>原价：2999.00元</del>&nbsp;&nbsp;现价：1999.00元</p>
+                    <p>月销量：500&nbsp;&nbsp;评价数：5000</p>
+                    <p>
+                        <a class="btn btn-primary" href="javascript:;" οnclick="addCart();" role="button">加入购物车</a>
+                        <a class="btn btn-danger" href="#" role="button">立即购买</a>
+                    </p>
+                </div>
+                <span class="label label-success new">新品</span>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="thumbnail product">
+                <a href="product.html"><img src="images/c2.jpg" alt="商品图片" style="width:300px;height:150px"></a>
+                <div class="caption">
+                    <h3>C++</h3>
+                    <p>性价比最高C语言教学视频</p>
+                    <p><del>原价：2999.00元</del>&nbsp;&nbsp;现价：939.00元</p>
+                    <p>月销量：500&nbsp;&nbsp;评价数：5000</p>
+                    <p>
+                        <a class="btn btn-primary" href="javascript:;" οnclick="addCart();" role="button">加入购物车</a>
+                        <a class="btn btn-danger" href="#" role="button">立即购买</a>
+                    </p>
+                </div>
+                <span class="label label-success new">新品</span>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="thumbnail product">
+                <a href="product.html"><img src="images/html.jpg" alt="商品图片" style="width:300px;height:150px"></a>
+                <div class="caption">
+                    <h3>HTML5</h3>
+                    <p>性价比最高HTML5教学视频</p>
+                    <p><del>原价：2999.00元</del>&nbsp;&nbsp;现价：2339.00元</p>
+                    <p>月销量：500&nbsp;&nbsp;评价数：5000</p>
+                    <p>
+                        <a class="btn btn-primary" href="javascript:;" οnclick="addCart();" role="button">加入购物车</a>
+                        <a class="btn btn-danger" href="#" role="button">立即购买</a>
+                    </p>
+                </div>
+                <span class="label label-success new">新品</span>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="thumbnail product">
+                <a href="product.html"><img src="images/javascript.png" alt="商品图片" style="width:300px;height:150px"></a>
+                <div class="caption">
+                    <h3>JavaScript</h3>
+                    <p>性价比最高JavaScript教学视频</p>
+                    <p><del>原价：2999.00元</del>&nbsp;&nbsp;现价：1939.00元</p>
+                    <p>月销量：500&nbsp;&nbsp;评价数：5000</p>
+                    <p>
+                        <a class="btn btn-primary" href="javascript:;" οnclick="addCart();" role="button">加入购物车</a>
+                        <a class="btn btn-danger" href="#" role="button">立即购买</a>
+                    </p>
+                </div>
+                <span class="label label-success new">新品</span>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <div class="thumbnail product">
+                <a href="product.html"><img src="images/ai.png" alt="商品图片" style="width:300px;height:150px"></a>
+                <div class="caption">
+                    <h3>AI人工智能</h3>
+                    <p>性价比最高AI人工智能教学视频</p>
+                    <p><del>原价：4999.00元</del>&nbsp;&nbsp;现价：3239.00元</p>
+                    <p>月销量：500&nbsp;&nbsp;评价数：5000</p>
+                    <p>
+                        <a class="btn btn-primary" href="javascript:;" οnclick="addCart();" role="button">加入购物车</a>
+                        <a class="btn btn-danger" href="#" role="button">立即购买</a>
+                    </p>
+                </div>
+                <span class="label label-success new">新品</span>
+            </div>
+        </div>
+
+
+    </div>
+
+    <!--分页-->
+    <nav align="center">
+        <ul class="pagination">
+            <li><a href="#"><span>&laquo</span></a>
+            <li><a href="#">1
+            <li><a href="#">2
+            <li><a href="#">3
+            <li><a href="#">4
+            <li><a href="#"><span>&raquo</span></a>
+        </ul>
+    </nav>
+
+</div><!--end of container-->
+
+</body>
+</html>

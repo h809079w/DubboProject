@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DubboProject.iml" filepath="$PROJECT_DIR$/DubboProject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/IndexConsumer/IndexConsumer.iml" filepath="$PROJECT_DIR$/IndexConsumer/IndexConsumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProductConsumer/ProductConsumer.iml" filepath="$PROJECT_DIR$/ProductConsumer/ProductConsumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ProductService/ProductService.iml" filepath="$PROJECT_DIR$/ProductService/ProductService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PurchaseConsumer/PurchaseConsumer.iml" filepath="$PROJECT_DIR$/PurchaseConsumer/PurchaseConsumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PurchaseService2/PurchaseService2.iml" filepath="$PROJECT_DIR$/PurchaseService2/PurchaseService2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RecomenderService/RecomenderService.iml" filepath="$PROJECT_DIR$/RecomenderService/RecomenderService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SearchService/SearchService.iml" filepath="$PROJECT_DIR$/SearchService/SearchService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ServiceAPI/ServiceAPI.iml" filepath="$PROJECT_DIR$/ServiceAPI/ServiceAPI.iml" />
+    </modules>
+  </component>
+</project>

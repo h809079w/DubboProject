@@ -1,0 +1,105 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>登录</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!-- jquery -->
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+    <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <!-- jquery-validator -->
+    <script type="text/javascript" th:src="@{/jquery-validation/jquery.validate.min.js}"></script>
+    <script type="text/javascript" th:src="@{/jquery-validation/localization/messages_zh.min.js}"></script>
+    <!-- layer -->
+    <script type="text/javascript" th:src="@{/layer/layer.js}"></script>
+    <!-- md5.js -->
+    <script type="text/javascript" th:src="@{/js/md5.min.js}"></script>
+    <!-- common.js -->
+    <script type="text/javascript" th:src="@{/js/common.js}"></script>
+    </head>
+<body>
+
+<form name="loginForm" id="loginForm" method="post"  style="width:30%; margin:0 auto;">
+
+	<h2 style="text-align:center; margin-bottom: 20px">评分</h2>
+
+	<div class="form-group">
+		<div class="row">
+			<label class="form-label col-md-4">用户id</label>
+			<div class="col-md-8">
+				<input id="userId" name = "productId" class="form-control" type="text" th:value="${user.id}" required="true"  />
+			</div>
+			<div class="col-md-1">
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group">
+       	<div class="row">
+	       	<label class="form-label col-md-4">产品id</label>
+	        <div class="col-md-8">
+	        	<input id="productId" name = "productId" class="form-control" type="text" th:value="${productId}" required="true"  />
+	    	</div>
+	    	<div class="col-md-1">
+	    	</div>
+    	</div>
+    </div>
+
+    <div class="form-group">
+     		<div class="row">
+		        <label class="form-label col-md-4">请输入分数</label>
+		        <div class="col-md-8">
+		        	<input id="score" name="score" class="form-control"  />
+	       		</div>
+      		</div>
+	</div>
+
+	<div class="row" style="margin-top:40px;">
+		     	<div class="col-md-6">
+	       	 		<button class="btn btn-primary btn-block" type="reset" onclick="reset()">重置</button>
+	       	 	</div>
+	       	 	<div class="col-md-6">
+	       	 		<button class="btn btn-primary btn-block" type="submit" onclick="rate()">评分</button>
+	       	 	</div>
+	 </div>
+
+</form>
+</body>
+<script>
+function rate(){
+	$("#loginForm").validate({
+        submitHandler:function(form){
+             doRate();
+        }
+    });
+}
+function doRate(){
+	g_showLoading();
+
+
+	$.ajax({
+		url: "/recommender/finish_rate",
+	    type: "POST",
+	    data:{
+	    	userId:$("#userId").val(),
+	    	productId: $("#productId").val(),
+			score:$("#score").val(),
+	    },
+	    success:function(data){
+	    	layer.closeAll();
+	    	if(data.code == 0){
+	    		layer.msg("成功");
+	    		window.location.href="/products_list_static.html";
+	    	}else{
+	    		layer.msg(data.msg);
+	    	}
+	    },
+	    error:function(){
+	    	layer.closeAll();
+	    }
+	});
+}
+</script>
+</html>

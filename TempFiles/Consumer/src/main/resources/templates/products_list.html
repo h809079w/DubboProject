@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>商品列表</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- jquery -->
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <!-- bootstrap -->
+    <link rel="stylesheet" type="text/css" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+    <script type="text/javascript" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+    <!-- jquery-validator -->
+    <script type="text/javascript" th:src="@{/jquery-validation/jquery.validate.min.js}"></script>
+    <script type="text/javascript" th:src="@{/jquery-validation/localization/messages_zh.min.js}"></script>
+    <!-- layer -->
+    <script type="text/javascript" th:src="@{/layer/layer.js}"></script>
+    <!-- md5.js -->
+    <script type="text/javascript" th:src="@{/js/md5.min.js}"></script>
+    <!-- common.js -->
+    <script type="text/javascript" th:src="@{/js/common.js}"></script>
+
+    <link href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="//cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//cdn.bootcss.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">导航栏</a>
+    </div>
+    <div>
+        <ul class="nav navbar-nav">
+            <li><a href="/login/to_login">登录</a></li>
+            <li><a href="/products/to_list2">商品列表</a></li>
+            <li><a href="/purchase/order/orderinfos">我的订单</a></li>
+            <li><a href="/recommender/userrecs">离线推荐</a></li>
+            <li><a href="/recommender/streamrecs">实时推荐</a></li>
+            <div class="input-group col-md-3" style="margin-top:0px;positon:relative">
+                <input id="query",name="query",type="text" class="form-control"placeholder="请输入字段名" />
+                <span class="input-group-btn">
+               <button class="btn btn-info btn-search",type="submit" onclick="search()">搜索</button>
+                 </span>
+            </div>
+        </ul>
+    </div></nav>
+<div class="panel panel-default" >
+    <div class="panel-heading">秒杀商品列表</div>
+    <table class="table" id="productsVoList">
+        <tr><td>商品名称</td><td>商品图片</td><td>商品价格</td><td>库存数量</td><td>详情</td></tr>
+        <tr  th:each="productsVo : ${productsVoList}">
+            <td th:text="${productsVo.name}"></td>
+            <td ><img th:src="@{${productsVo.img}}" width="100" height="100" /></td>
+            <td th:text="${productsVo.price}"></td>
+            <td th:text="${productsVo.stockCount}"></td>
+            <td><a class="btn btn-primary" th:href="'/products_detail.htm?productId='+${productsVo.id}">商品详情</a></td>
+            <td><a class="btn btn-danger" th:href="'/recommender/productrecs/'+${productsVo.id}">相似商品</a></td>
+        </tr>
+
+    </table>
+</div>
+
+<ul class="pagination">
+    <li><a th:href="'/products/to_list2?pageNum='+${pageNum-1}" th:text="${pageNum-1}"></a></li>
+    <li><a id="pageNum" name="pageNum" th:href="'/products/to_list2?pageNum='+${pageNum}" th:text="${pageNum}"></a></li>
+    <li><a th:href="'/products/to_list2?pageNum='+${pageNum+1}" th:text="${pageNum+1}"></a></li>
+    <li><a th:href="'/products/to_list2?pageNum='+${pageNum+2}" th:text="${pageNum+2}"></a></li>
+    <li><a th:href="'/products/to_list2?pageNum='+${pageNum+3}" th:text="${pageNum+3}"></a></li>
+    <li><a th:href="'/products/to_list2?pageNum='+${pageNum+1}">&raquo;</a></li>
+</ul>
+
+</body>
+</html>
+<script>
+    function search(){
+        g_showLoading();
+        window.location.href="/search/do_search?query="+$("#query").val();
+    }
+
+</script>
