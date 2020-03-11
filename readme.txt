@@ -14,5 +14,5 @@
 	技术点：flume，kafka，spark，mysql
 		flume：采集日志
 		kafka：日志前处理
-		spark：离线推荐和实时推荐存如mysql
+		spark：离线推荐和实时推荐存入mysql
 重构：SpringCloud Alibaba重构，引入sentinel流量哨兵
